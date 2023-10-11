@@ -14,6 +14,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from './pages/Home.tsx';
 import LoginPage from './pages/Login.tsx';
 import RegisterPage from './pages/Register.tsx';
+import ProfilePage from './pages/Profile.tsx';
+import PrivateRoute from './components/PrivateRoute.tsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +23,9 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="" element={<PrivateRoute />}>
+        <Route path="/profile" element={<ProfilePage />} />
+      </Route>
     </Route>
   )
 );
