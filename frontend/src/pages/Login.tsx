@@ -6,10 +6,12 @@ import FormContainer from '../components/FormContainer';
 import { useLoginMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import { toast } from 'react-toastify';
+import Loader from '../components/Loader';
 
 interface RootState {
   auth: {
     userInfo: {
+      _id: string;
       name: string;
       email: string;
       password: string;
@@ -69,12 +71,11 @@ const LoginPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-
+        {isLoading && <Loader />}
         <Button type="submit" variant="primary" className="mt-3">
           Sign In
         </Button>
       </Form>
-
       <Row className="py-3">
         <Col>
           New Visitor? <Link to={`/register`}>Register</Link>
