@@ -1,7 +1,20 @@
 import { Container, Card, Button } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { useSelector } from 'react-redux';
+
+interface RootState {
+  auth: {
+    userInfo: {
+      _id: string;
+      name: string;
+      email: string;
+      password: string;
+    };
+  };
+}
 
 const Hero = () => {
+  const { userInfo } = useSelector((state: RootState) => state.auth);
+
   return (
     <div className=" py-5">
       <Container className="d-flex justify-content-center">
@@ -12,8 +25,8 @@ const Hero = () => {
             a JWT in an HTTP-Only cookie. It also uses Redux Toolkit
             and the React Bootstrap library
           </p>
-          <div className="d-flex">
-            <LinkContainer to="/login">
+          {!userInfo && (
+            <div className="d-flex">
               <Button
                 variant="primary"
                 href="/login"
@@ -21,13 +34,12 @@ const Hero = () => {
               >
                 Sign In
               </Button>
-            </LinkContainer>
-            <LinkContainer to="/register">
+
               <Button variant="secondary" href="/register">
-                Sign Out
+                Register
               </Button>
-            </LinkContainer>
-          </div>
+            </div>
+          )}
         </Card>
       </Container>
     </div>
