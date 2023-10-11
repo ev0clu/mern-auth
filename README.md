@@ -17,6 +17,8 @@ The app feature is to let user to register, log in, log out and update profile.
 
 ## How to run from local repository
 
+#### Developement mode
+
 1. Clone the repository
 2. Run `npm install` command in your terminal
 3. Create .env file and add the following enviromental variables:
@@ -28,6 +30,21 @@ The app feature is to let user to register, log in, log out and update profile.
 
 4. Run `npm run dev` command in your terminal at the root folder
 5. Frontend server running at `http://localhost:3000/`
+
+#### Production mode
+
+1. Clone the repository
+2. Run `npm install` command in your terminal
+3. Create .env file and add the following enviromental variables:
+
+- `NODE_ENV=production`
+- `PORT=5000`
+- `MONGO_URI=mongo uri`
+- `JWT_SECRET=abc123`
+
+4. Run `npm run build` command in your terminal at the root folder to creat build in `frontend/dist` folder
+5. Run `npm run server` command in your terminal at the root folder
+6. Frontend server running at `http://localhost:5000/`
 
 ## Dependencies
 
